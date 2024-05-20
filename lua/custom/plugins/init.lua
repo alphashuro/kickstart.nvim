@@ -58,4 +58,11 @@ return {
       vim.keymap.set('n', 'gJ', ':SplitjoinJoin<CR>', { desc = 'Join' })
     end,
   },
+
+  {
+    'simnalamburt/vim-mundo',
+    config = function()
+      vim.keymap.set('n', 'tu', ':MundoToggle<CR>', { desc = 'Toggle undo tree' })
+    end,
+  },
 }
