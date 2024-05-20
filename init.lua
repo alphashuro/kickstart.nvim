@@ -298,15 +298,20 @@ require('lazy').setup({
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
+      local actions = require 'telescope.actions'
+
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        defaults = {
+          mappings = {
+            -- i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+            n = {
+              ['q'] = actions.smart_send_to_qflist + actions.open_qflist,
+            },
+          },
+        },
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
@@ -429,6 +434,22 @@ require('lazy').setup({
           map('<leader>ch', vim.lsp.buf.hover, 'Hover Documentation')
           map('<leader>cD', vim.lsp.buf.declaration, 'Goto declaration')
           map('gD', vim.lsp.buf.declaration, 'Goto declaration')
+
+          local whichkey = require 'which-key'
+
+          whichkey.register {
+            ['<leader>c'] = {
+              name = '+code',
+              c = {
+                name = '+calls',
+                i = { vim.lsp.buf.incoming_calls, 'Incoming calls' },
+                o = { vim.lsp.buf.outgoing_calls, 'Outgoing calls' },
+              },
+            },
+          }
+
+          -- map('<leader>cci', vim.lsp.buf.incoming_calls, 'View incoming calls')
+          -- map('<leader>cco', vim.lsp.buf.outgoing_calls, 'View outgoing calls')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
