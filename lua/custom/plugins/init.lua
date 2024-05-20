@@ -20,5 +20,42 @@ return {
       vim.keymap.set({ 'n', 'x', 'o' }, 'gw', '<Plug>(leap-from-window)')
     end,
   },
-  'tpope/vim-fugitive',
+  {
+    'tpope/vim-fugitive',
+    config = function()
+      vim.keymap.set({ 'n', 'x', 'o' }, '<leader>gg', ':Git<CR>', { desc = 'Git status' })
+    end,
+  },
+  {
+    'ldelossa/litee.nvim',
+    event = 'VeryLazy',
+    opts = {
+      notify = { enabled = false },
+      panel = { orientation = 'bottom', panel_size = 10 },
+    },
+    config = function(_, opts)
+      require('litee.lib').setup(opts)
+    end,
+  },
+
+  {
+    'ldelossa/litee-calltree.nvim',
+    dependencies = 'ldelossa/litee.nvim',
+    event = 'VeryLazy',
+    opts = {
+      on_open = 'panel',
+      map_resize_keys = false,
+    },
+    config = function(_, opts)
+      require('litee.calltree').setup(opts)
+    end,
+  },
+
+  {
+    'AndrewRadev/splitjoin.vim',
+    config = function()
+      vim.keymap.set('n', 'gS', ':SplitjoinSplit<CR>', { desc = 'Split' })
+      vim.keymap.set('n', 'gJ', ':SplitjoinJoin<CR>', { desc = 'Join' })
+    end,
+  },
 }
