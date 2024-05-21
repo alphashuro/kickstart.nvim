@@ -23,7 +23,6 @@ If you experience any errors while trying to install kickstart, run `:checkhealt
 
 --]]
 
--- load local .nvim.lua
 vim.opt.exrc = true
 
 -- Set <space> as the leader key
@@ -44,7 +43,7 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
