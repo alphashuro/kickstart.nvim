@@ -1,19 +1,21 @@
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
+-- require './asciidoc.lua'
+
 return {
   'tpope/vim-vinegar',
   'tpope/vim-repeat',
   'pmizio/typescript-tools.nvim',
+  'tpope/vim-dadbod',
+  'kristijanhusak/vim-dadbod-ui',
+  'idanarye/vim-merginal',
+  { 'git@github.com:akinsho/toggleterm.nvim.git', version = '*', config = true },
+
   {
     'stevearc/oil.nvim',
     config = function()
       require('oil').setup()
     end,
   },
-  { 'tpope/vim-dadbod' },
-  { 'kristijanhusak/vim-dadbod-ui' },
+
   {
     'ggandor/leap.nvim',
     config = function()
@@ -22,12 +24,12 @@ return {
       vim.keymap.set({ 'n', 'x', 'o' }, 'gw', '<Plug>(leap-from-window)')
     end,
   },
+
   {
     'tpope/vim-fugitive',
-    config = function()
-      vim.keymap.set({ 'n', 'x', 'o' }, '<leader>gg', ':Git<CR>', { desc = 'Git status' })
-    end,
+    config = function() end,
   },
+
   {
     'ldelossa/litee.nvim',
     event = 'VeryLazy',
@@ -54,19 +56,22 @@ return {
   },
 
   {
-    'AndrewRadev/splitjoin.vim',
-    config = function()
-      vim.keymap.set('n', 'gS', ':SplitjoinSplit<CR>', { desc = 'Split' })
-      vim.keymap.set('n', 'gJ', ':SplitjoinJoin<CR>', { desc = 'Join' })
-    end,
-  },
-
-  {
     'simnalamburt/vim-mundo',
     config = function()
       vim.keymap.set('n', 'tu', ':MundoToggle<CR>', { desc = 'Toggle undo tree' })
     end,
   },
 
-  'idanarye/vim-merginal',
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    config = function()
+      require('neogit').setup {}
+      vim.keymap.set({ 'n', 'x', 'o' }, '<leader>gg', ':Neogit<CR>', { desc = 'Git status' })
+    end,
+  },
 }
