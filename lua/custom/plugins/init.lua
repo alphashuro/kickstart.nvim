@@ -12,6 +12,8 @@ return {
       require('oil').setup()
     end,
   },
+  { 'tpope/vim-dadbod' },
+  { 'kristijanhusak/vim-dadbod-ui' },
   {
     'ggandor/leap.nvim',
     config = function()
