@@ -67,4 +67,6 @@ return {
       vim.keymap.set('n', 'tu', ':MundoToggle<CR>', { desc = 'Toggle undo tree' })
     end,
   },
+
+  'idanarye/vim-merginal',
 }
