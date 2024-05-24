@@ -67,11 +67,14 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'sindrets/diffview.nvim',
+      'nvim-tree/nvim-web-devicons', -- for diffview
       'nvim-telescope/telescope.nvim',
     },
     config = function()
       require('neogit').setup {}
       vim.keymap.set({ 'n', 'x', 'o' }, '<leader>gg', ':Neogit<CR>', { desc = 'Git status' })
+      vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', { desc = 'Diff' })
+      vim.keymap.set('n', '<leader>gH', ':DIffviewFileHistory<CR>', { desc = 'File history' })
     end,
   },
 }
